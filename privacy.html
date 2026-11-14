@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy – MattStories Studio</title>
+  <meta name="description" content="How MattStories Studio, a private local publishing tool used only by its owner, handles data from YouTube, Instagram and TikTok.">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="MattStories Studio – home">
+      <span class="brand-mark" aria-hidden="true">M&amp;S</span>
+      <span class="brand-name">MattStories Studio<small>Legal</small></span>
+    </a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="index.html">Home</a>
+      <a href="privacy.html" aria-current="page">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <section class="hero">
+    <h1>Privacy Policy</h1>
+    <ul class="meta">
+      <li>Last updated: November 14, 2026</li>
+      <li>Effective: November 14, 2026</li>
+      <li>Applies to: MattStories Studio (private desktop tool)</li>
+    </ul>
+  </section>
+
+  <section class="panel summary" aria-labelledby="summary">
+    <h2 id="summary">The short version</h2>
+    <ul>
+      <li>MattStories Studio (“the App”) is a <strong>private tool</strong>. It is used only by its owner
+        (“the Owner”) to publish videos to the Owner’s <strong>own</strong> YouTube, Instagram and TikTok accounts.
+        It is not offered to the public and not sold.</li>
+      <li>The App runs <strong>locally</strong> on the Owner’s computer in Poland and is reachable only from that
+        computer (<code>127.0.0.1</code>). It has no server, no user accounts, no analytics and no tracking.</li>
+      <li>The App connects only to the official APIs of <strong>Google/YouTube, Meta/Instagram and TikTok</strong>,
+        and only for accounts the Owner connects with OAuth.</li>
+      <li>Nothing is published until the Owner <strong>approves</strong> a specific video, platform and time. Test
+        mode is the default and sends nothing to any platform.</li>
+      <li>Access tokens and app secrets are encrypted with Windows DPAPI. Disconnecting an account asks the
+        platform to revoke access and deletes the stored tokens.</li>
+    </ul>
+  </section>
+
+  <nav class="panel toc" aria-labelledby="toc">
+    <h2 id="toc">Contents</h2>
+    <ol>
+      <li><a href="#who">Who runs the App</a></li>
+      <li><a href="#how">How the App works</a></li>
+      <li><a href="#data">Data the App processes</a></li>
+      <li><a href="#youtube">YouTube (Google)</a></li>
+      <li><a href="#instagram">Instagram (Meta)</a></li>
+      <li><a href="#tiktok">TikTok</a></li>
+      <li><a href="#use">How data is used</a></li>
+      <li><a href="#sharing">When data leaves the computer</a></li>
+      <li><a href="#security">Storage and security</a></li>
+      <li><a href="#retention">Retention</a></li>
+      <li><a href="#deletion">Disconnecting and deleting data</a></li>
+      <li><a href="#others">Other people</a></li>
+      <li><a href="#rights">Rights and applicable law</a></li>
+      <li><a href="#changes">Changes to this policy</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </nav>
+
+  <section class="panel" id="who">
+    <h2><span class="num">1</span>Who runs the App</h2>
+    <p>MattStories Studio is a private tool owned and used by
+      Mateusz Nagler, the person behind the
+      “Matt &amp; Stories” channel.</p>
+    <ul>
+      <li>The Owner is the App’s <strong>only user</strong>.</li>
+      <li>The App publishes only to the Owner’s own YouTube, Instagram and TikTok accounts.</li>
+      <li>The App is not distributed, offered to the public or sold, and no one else can sign up for it.</li>
+      <li>The App runs on the Owner’s computer in Poland. The data described below stays on that computer, apart
+        from what is sent to the platforms (see <a href="#sharing">section 8</a>).</li>
+    </ul>
+  </section>
+
+  <section class="panel" id="how">
+    <h2><span class="num">2</span>How the App works</h2>
+    <ul>
+      <li>The App is a Python/Flask web application started on the Owner’s computer. Its built-in web server
+        listens only on <code>127.0.0.1</code>, so it is not visible to other devices on the network or the
+        internet.</li>
+      <li>It helps the Owner plan short videos (YouTube Shorts, Instagram Reels, TikTok) in three daily time slots.
+        The Owner can publish them manually or, after explicit approval, through each platform’s official API.</li>
+      <li>The App includes no analytics, crash reporting, advertising SDKs, third-party fonts or third-party
+        scripts. Apart from the platform APIs listed in sections 4–6, it makes no network requests.</li>
+      <li>Cookies: the App sets one cookie in the Owner’s browser, for the local address only. It is a signed
+        session cookie that holds a form-protection (CSRF) token, the temporary OAuth <code>state</code> value and
+        on-screen messages. It is not used for tracking.</li>
+      <li>This website only hosts the App’s legal pages. It contains no scripts, forms, trackers or third-party
+        resources.</li>
+    </ul>
+  </section>
+
+  <section class="panel" id="data">
+    <h2><span class="num">3</span>Data the App processes</h2>
+    <h3>Content the Owner adds</h3>
+    <ul>
+      <li>Video entries: title, per-platform descriptions, hashtag sets, notes, planned date and time slot, and
+        publication statuses.</li>
+      <li>Local file paths of the Owner’s MP4 files. The App scans the configured video folders and computes a
+        SHA-256 checksum and the duration to recognise each file.</li>
+      <li>MP4 files are only read. The App never edits or re-encodes them. After all three platforms are confirmed,
+        it can move a file from the “to publish” folder to the “published” folder.</li>
+      <li>Optional script text and description files (<code>studio-metadata.json</code>).</li>
+      <li>Thumbnails: if the Owner picks a frame, the App uses FFmpeg to save a JPG of that frame on the computer,
+        and stores the frame time.</li>
+    </ul>
+    <h3>Account connection data (per platform)</h3>
+    <ul>
+      <li>OAuth access tokens and, where the platform issues them, refresh tokens, stored encrypted
+        (see <a href="#security">section 9</a>).</li>
+      <li>Basic account identifiers that show which account is connected: the platform account ID and display
+        name or username, as listed for each platform below.</li>
+      <li>The list of permissions (scopes) granted, token expiry times and connection status.</li>
+    </ul>
+    <h3>App configuration</h3>
+    <ul>
+      <li>The OAuth client credentials of the Owner’s own developer apps (Google OAuth client ID and secret; Meta
+        App ID, App Secret and Configuration ID; TikTok client key and secret).</li>
+      <li>Secrets are stored encrypted. The Meta credentials can instead come from environment variables, and then
+        the secret is not written to the database.</li>
+      <li>Settings such as hashtag sets and whether real publishing (“live mode”) is enabled for each platform.</li>
+    </ul>
+    <h3>Logs and history</h3>
+    <ul>
+      <li>A history of publishing attempts and events: time, step, result, error messages, the IDs returned by the
+        platform (for example YouTube video ID, Instagram container and media ID, TikTok <code>publish_id</code>)
+        and public post links.</li>
+      <li>This history prevents the same video from being published twice.</li>
+      <li>Tokens, authorization codes and similar values are replaced with <code>[UKRYTE]</code> (“hidden”) before
+        log messages are written.</li>
+    </ul>
+  </section>
+
+  <section class="panel" id="youtube">
+    <h2><span class="num">4</span>YouTube (Google)</h2>
+    <p>The App uses the YouTube Data API v3 with Google OAuth 2.0 (installed-app flow with PKCE). It requests only
+      these scopes:</p>
+    <ul>
+      <li><code>https://www.googleapis.com/auth/youtube.upload</code>: to upload the videos the Owner approves and to
+        set a chosen thumbnail;</li>
+      <li><code>https://www.googleapis.com/auth/youtube.readonly</code>: to read the Owner’s channel ID and name and
+        the processing and privacy status of videos uploaded by the App.</li>
+    </ul>
+    <p><strong>Sent to YouTube after approval:</strong></p>
+    <ul>
+      <li>the video file, title, and description with hashtags;</li>
+      <li>tags derived from the hashtag set, and a category;</li>
+      <li>privacy status <code>private</code> with the approved <code>publishAt</code> time;</li>
+      <li>the “made for kids” declaration and the altered/synthetic content declaration;</li>
+      <li>if selected, the thumbnail image.</li>
+    </ul>
+    <p class="callout">MattStories Studio’s use and transfer of information received from Google APIs adheres to the
+      <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Google API Services
+      User Data Policy</a>, including the Limited Use requirements. YouTube features are subject to the
+      <a href="https://www.youtube.com/t/terms" rel="noopener">YouTube Terms of Service</a>, and Google handles data
+      under the <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>. Access can be
+      revoked at any time on the <a href="https://myaccount.google.com/permissions" rel="noopener">Google Account
+      permissions page</a>.</p>
+  </section>
+
+  <section class="panel" id="instagram">
+    <h2><span class="num">5</span>Instagram (Meta)</h2>
+    <p>The App uses the Instagram Platform (Graph API) with one of two official login options:</p>
+    <ul>
+      <li><strong>Facebook Login for Business:</strong>
+        <ul>
+          <li>permissions <code>instagram_basic</code>, <code>instagram_content_publish</code>,
+            <code>pages_show_list</code>, <code>pages_read_engagement</code> (or those in the selected Meta
+            configuration);</li>
+          <li>the App reads the granted permissions, the Facebook Page names, and the connected Instagram
+            professional account’s ID and username.</li>
+        </ul>
+      </li>
+      <li><strong>Instagram Login:</strong>
+        <ul>
+          <li>permissions <code>instagram_business_basic</code> and
+            <code>instagram_business_content_publish</code>;</li>
+          <li>the App reads the Instagram user ID, username and account type.</li>
+        </ul>
+      </li>
+    </ul>
+    <p><strong>Sent to Meta after approval:</strong></p>
+    <ul>
+      <li>the video file, uploaded directly to Meta (<code>rupload.facebook.com</code>), or, with Instagram Login, a
+        public video URL entered by the Owner;</li>
+      <li>the caption with hashtags, and whether to share the Reel to the feed;</li>
+      <li>if selected, the time position of the cover frame (<code>thumb_offset</code>).</li>
+    </ul>
+    <p>The App reads the processing status, the publishing quota and, after publishing, the post ID, permalink and
+      thumbnail URL.</p>
+    <p>The Instagram API has no native scheduling. The App itself sends the publish request at the approved time.
+      Meta handles data under the <a href="https://www.facebook.com/privacy/policy/" rel="noopener">Meta Privacy
+      Policy</a>.</p>
+  </section>
+
+  <section class="panel" id="tiktok">
+    <h2><span class="num">6</span>TikTok</h2>
+    <p class="callout"><strong>Status:</strong> the TikTok integration is in preparation. It is waiting for
+      configuration and, if TikTok requires it, verification of the App by TikTok. This section describes how the
+      integration is built to work once it is enabled.</p>
+    <p>The integration uses the official <strong>Login Kit</strong> (OAuth 2.0 with PKCE) and the
+      <strong>Content Posting API</strong>, only for the Owner’s own TikTok account.</p>
+    <h3>Scopes requested</h3>
+    <ul>
+      <li><code>user.info.basic</code>: to read the <code>open_id</code> and display name, which show which account
+        is connected;</li>
+      <li><code>video.publish</code>: to publish an approved video directly (Direct Post);</li>
+      <li><code>video.upload</code>: to send an approved video to the TikTok inbox, so the Owner can finish posting
+        in the TikTok app.</li>
+    </ul>
+    <h3>Data received from TikTok</h3>
+    <ul>
+      <li>Access token and refresh token, with their expiry times;</li>
+      <li><code>open_id</code> and display name;</li>
+      <li>Creator information returned by the Content Posting API, used to show the allowed options before a post
+        is approved. Examples: username, nickname, available privacy levels, whether comments, Duet or Stitch are
+        disabled, and the maximum video duration.</li>
+      <li>Publishing status and the <code>publish_id</code> or post ID.</li>
+    </ul>
+    <h3>Data sent to TikTok after approval</h3>
+    <ul>
+      <li>The video file (uploaded in chunks), the post title/caption with hashtags, and the chosen privacy level.
+        No privacy level is pre-selected.</li>
+      <li>The comment, Duet and Stitch settings, the commercial content disclosure, and the AI-generated content
+        label, if selected.</li>
+    </ul>
+    <p>TikTok data is used only to post approved videos and to show their status. The App does not read followers,
+      videos, messages or analytics. While the App is unaudited, TikTok allows posts from it only as private
+      (“Only me”), and the App enforces this. TikTok handles data under the
+      <a href="https://www.tiktok.com/legal/page/global/privacy-policy/en" rel="noopener">TikTok Privacy
+      Policy</a>.</p>
+  </section>
+
+  <section class="panel" id="use">
+    <h2><span class="num">7</span>How data is used</h2>
+    <p>Data is used only to provide the App’s features:</p>
+    <ul>
+      <li>planning and showing the connected account;</li>
+      <li>uploading and publishing approved videos, and checking their status;</li>
+      <li>preventing duplicate posts and keeping a history of what happened.</li>
+    </ul>
+    <p>The App does not sell data, does not use it for advertising or profiling, and sends it to no one other than
+      the platform chosen for a specific post.</p>
+  </section>
+
+  <section class="panel" id="sharing">
+    <h2><span class="num">8</span>When data leaves the computer</h2>
+    <ul>
+      <li>Data leaves the computer only to go to Google/YouTube, Meta/Instagram or TikTok, through their official
+        API endpoints. This happens when an account is connected, when a publication is approved, and when the App
+        checks the status of an approved publication.</li>
+      <li>In <strong>test mode</strong>, which is the default for every platform, the App simulates publishing and
+        sends nothing. Live mode must be switched on separately for each platform, and every real publication needs
+        its own approval.</li>
+      <li>No other person or company receives data from the App.</li>
+    </ul>
+  </section>
+
+  <section class="panel" id="security">
+    <h2><span class="num">9</span>Storage and security</h2>
+    <p>Data is stored in a SQLite database file in the App’s <code>data</code> folder on the Owner’s computer.
+      Before a database upgrade the App saves a backup copy in <code>data/backups</code>. Thumbnails are stored in
+      <code>data/thumbnails</code>.</p>
+    <ul>
+      <li><strong>Encryption of secrets:</strong> on Windows, OAuth tokens and app secrets are encrypted with Windows
+        DPAPI, so only the same Windows user on the same computer can decrypt them. On other operating systems DPAPI
+        is not available; the App then only encodes these values and shows a warning.</li>
+      <li><strong>OAuth protection:</strong> each login uses a random, single-use <code>state</code> value. It is
+        stored only as a hash and expires after 10 minutes. Google and TikTok logins also use PKCE.</li>
+      <li><strong>Tokens in transit:</strong> API calls use HTTPS. Instagram API tokens are sent in the
+        <code>Authorization</code> header, not in the URL.</li>
+      <li><strong>Local-only server:</strong> the App listens only on <code>127.0.0.1</code>, and its forms are
+        protected against cross-site requests.</li>
+      <li><strong>Redacted logs:</strong> tokens and codes are hidden before log messages are written.</li>
+    </ul>
+    <p>Anyone with access to the Owner’s Windows user account could use the App and its connected accounts. No
+      method of storage or transmission is completely secure.</p>
+  </section>
+
+  <section class="panel" id="retention">
+    <h2><span class="num">10</span>Retention</h2>
+    <ul>
+      <li>The App does not delete content, history or settings automatically. They stay in the local database until
+        the Owner deletes them.</li>
+      <li>Pending OAuth <code>state</code> values expire after 10 minutes and are removed.</li>
+      <li>Access and refresh tokens are valid for as long as the platform allows, and are deleted from the database
+        when the account is disconnected.</li>
+      <li>If a platform rejects a token, the stored access token is cleared and the App asks the Owner to
+        reconnect.</li>
+      <li>Data a platform has received, such as a published video, is kept by that platform under its own policies.
+        Deleting data in the App does not delete published posts.</li>
+    </ul>
+  </section>
+
+  <section class="panel" id="deletion">
+    <h2><span class="num">11</span>Disconnecting and deleting data</h2>
+    <h3>Disconnect an account</h3>
+    <p>In the App, open <em>Połączone konta</em> (Connected accounts) and choose disconnect for the platform. The App
+      then:</p>
+    <ul>
+      <li><strong>YouTube:</strong> calls Google’s token revocation endpoint and deletes the stored tokens.</li>
+      <li><strong>Instagram via Facebook Login:</strong> asks Meta to remove the App’s permissions and deletes the
+        stored token.</li>
+      <li><strong>Instagram via Instagram Login:</strong> Meta offers no revocation endpoint here, so the App deletes
+        the stored token and reminds the Owner to remove the App in Instagram’s settings.</li>
+      <li><strong>TikTok:</strong> calls TikTok’s token revocation endpoint and deletes the stored tokens.</li>
+    </ul>
+    <p>Disconnecting also switches that platform back to test mode. If revocation fails, the App says so, and access
+      can be removed in the platform’s account settings.</p>
+    <h3>Delete other data</h3>
+    <ul>
+      <li>Deleting a video in the App removes the entry, its publishing jobs and its thumbnail results, but not the
+        MP4 file on disk. The log of publishing attempts (with platform post IDs) is kept so the same video cannot
+        be published twice, and is removed together with the <code>data</code> folder.</li>
+      <li>Saved app credentials can be deleted on the Connected accounts page.</li>
+      <li>Deleting the <code>data</code> folder (including <code>data/backups</code> and
+        <code>data/thumbnails</code>) removes everything the App stored.</li>
+      <li>Published posts must be deleted on the platform itself. The App has no delete function for them.</li>
+    </ul>
+  </section>
+
+  <section class="panel" id="others">
+    <h2><span class="num">12</span>Other people</h2>
+    <ul>
+      <li>The App is not used by, and not offered to, anyone other than the Owner, and it is not directed at
+        children.</li>
+      <li>It does not collect data about viewers, followers or commenters on any platform.</li>
+      <li>People who see or interact with the Owner’s published videos do so on YouTube, Instagram or TikTok, under
+        those platforms’ privacy policies.</li>
+    </ul>
+  </section>
+
+  <section class="panel" id="rights">
+    <h2><span class="num">13</span>Rights and applicable law</h2>
+    <p>The data stays on the Owner’s computer, so the Owner can view, correct, export (by copying the database file)
+      or delete it at any time, as described above.</p>
+    <p>The App is operated from Poland. Where personal data protection law applies, this means the General Data
+      Protection Regulation (Regulation (EU) 2016/679, “GDPR”) and Polish data protection law. The supervisory
+      authority in Poland is the President of the Personal Data Protection Office (Prezes Urzędu Ochrony Danych
+      Osobowych, “UODO”), <a href="https://uodo.gov.pl/en" rel="noopener">uodo.gov.pl</a>. Anyone who believes their
+      personal data is processed unlawfully may lodge a complaint with that authority.</p>
+    <p>For questions about data held by YouTube, Meta or TikTok, contact those companies directly.</p>
+  </section>
+
+  <section class="panel" id="changes">
+    <h2><span class="num">14</span>Changes to this policy</h2>
+    <p>This policy is updated when the App changes, for example when the TikTok integration is enabled. The “Last
+      updated” date at the top shows the current version.</p>
+  </section>
+
+  <section class="panel" id="contact">
+    <h2><span class="num">15</span>Contact</h2>
+    <p>Questions about this policy: <a href="mailto:xminerekoff@gmail.com">xminerekoff@gmail.com</a>.</p>
+    <p>See also the <a href="terms.html">Terms of Service</a>.</p>
+    <p><a class="back-top" href="#top">↑ Back to top</a></p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 MattStories Studio</span>
+    <nav aria-label="Footer">
+      <a href="index.html">Home</a>
+      <a href="privacy.html" aria-current="page">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
